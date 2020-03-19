@@ -28,12 +28,6 @@ const BoilingCrab = () => {
           </div>
           <div className="col-md-8">
             <div className="profile-dashboard d-flex justify-content-center px-md-5 flex-column flex-sm-row align-items-center">
-              {/* <div className="shareat-payments">
-                <span className="d-block">243</span>
-                <span className="d-block text-muted text-small">
-                  Shareat Payments
-                </span>
-              </div> */}
               <div className="spiltting">
                 <span className="d-block">
                   {formData.data ? formData.data["total splits"] : "0"}

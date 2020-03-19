@@ -57,7 +57,16 @@ body {
 		input{
 			width:100%;
 			border: 0 none;
-    		text-align: center;
+			text-align: center;
+			color: transparent;
+			  text-shadow: 0 0 0 #000;
+			  cursor: pointer;
+			&:focus {
+				outline: none;
+			}
+		}
+		input.active{
+			text-shadow: 0 0 0 #fff;
 		}
 	}
 }
@@ -87,6 +96,9 @@ body {
 	color: #fff;
 	background-color: #ff9100;
 }
+.nav-item a{
+	text-decoration: none;
+}
 .nav-item.active a {
 	color: #ffc209;
 }
@@ -98,6 +110,13 @@ body {
 }
 .text-yellow {
 	color: #ffeb68;
+}
+.profile-details {
+	a{
+		i{
+			cursor: pointer;
+		}
+	}
 }
 .tab-content{
 	.col-md-5.border {
@@ -115,10 +134,14 @@ body {
 		font-size: 38px;
 		color: #000;
 	}
-	.value-diffence i, .value-diffence span {
-		color: #31bc00 !important;
-		font-size: 25px !important;
+	.value-diffence.text-green i, .value-diffence.text-green span {
+		 color: #31bc00 !important;
+		font-size: 20px !important;
 	}
+	.value-diffence.text-red i, .value-diffence.text-red span {
+		color: red !important;
+	   font-size: 20px !important;
+   }
 	.offer-row .d-flex{
 		min-height: 82px;
 		border-top-left-radius: 0 !important;

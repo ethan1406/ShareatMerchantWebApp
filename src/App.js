@@ -1,16 +1,20 @@
 import React from "react";
 import "./App.css";
-import DefaultHeader from "./container/Layout/DefaultHeader";
-import DefaultFooter from "./container/Layout/DefaultFooter";
-import Layout from "./container/Layout/Layout";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./scss/custom.scss";
+import Home from "./views/Home";
+import CustomersLoyalty from "./views/CustomersLoyalty";
 
 function App() {
   return (
     <div className="App">
-      <DefaultHeader />
-      <Layout />
-      <DefaultFooter />
+      <Router>
+        <div>
+          <Route path="/" exact component={Home} />
+          <Route path="/customersLoyalty" component={CustomersLoyalty} />
+        </div>
+      </Router>
     </div>
   );
 }

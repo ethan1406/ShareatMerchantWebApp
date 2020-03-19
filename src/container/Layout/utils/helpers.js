@@ -74,8 +74,59 @@ export const currentWeek = () => {
   var mydate = new Date();
   var week = mydate.getWeek();
   var yyyy = mydate.getFullYear();
-  var fulldate = week + " " + yyyy;
-  return fulldate;
+  var currentweek = week + " " + yyyy;
+  return currentweek;
+};
+
+export const lastWeek = () => {
+  Date.prototype.getWeek = function() {
+    var onejan = new Date(this.getFullYear(), 0, 1);
+    return Math.ceil(((this - onejan) / 86400000 + onejan.getDay() + 1) / 7);
+  };
+  var mydate = new Date();
+  var week = mydate.getWeek() - 1;
+  var yyyy = mydate.getFullYear();
+  var lastweek = week + " " + yyyy;
+  return lastweek;
+};
+
+export const lastMonth = () => {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() - 1;
+  //alert(mm);
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  var month_name = function(dt) {
+    var a = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ];
+    return a[dt.getMonth()];
+  };
+  var mon = new Date();
+  mon.setDate(1);
+  mon.setMonth(mon.getMonth() - 1);
+  //alert(x)
+  var month = month_name(mon);
+  today = month + " " + yyyy;
+  //alert(today);
+  return today;
 };
 
 export const currentMonth = () => {
@@ -108,6 +159,7 @@ export const currentMonth = () => {
   };
   var month = month_name(new Date());
   today = month + " " + yyyy;
+  //alert(today);
   return today;
 };
 
@@ -149,5 +201,18 @@ export const changeName = tabValue => {
       return currentMonth();
     default:
       return currentdate();
+  }
+};
+
+export const changeYesterday = tabValue => {
+  switch (tabValue) {
+    case "day":
+      return yesterdayDate();
+    case "week":
+      return lastWeek();
+    case "month":
+      return lastMonth();
+    default:
+      return yesterdayDate();
   }
 };

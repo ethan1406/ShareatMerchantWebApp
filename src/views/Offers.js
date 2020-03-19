@@ -8,40 +8,11 @@ import {
 } from "../container/Layout/utils/helpers";
 
 const Offers = props => {
-  const [formData, setFormData] = useState({});
-  let rem = [];
-  const getMerchant = async () => {
-    console.log(dateValue());
-    const data = await axios.get(`/5b346f48d585fb0e7d3ed3fc/${dateValue()}`);
-    setFormData({ ...formData, ...data });
-  };
-  useEffect(() => {
-    getMerchant();
-  }, []);
+  let tabValue = props.tabValue ? props.tabValue : "day";
+  let finalValue = 0;
 
-  const VisitorsData = () => {
-    var tabValue = props.tabValue ? props.tabValue : "day";
-    var visitors = formData.data
-      ? formData.data[tabValue].map(ele => {
-          if (ele.date === changeName(tabValue)) {
-            if (ele.rewards) {
-              ele.rewards.map(res => {
-                rem.push(res.rewards.reward);
-              });
-              return false;
-            }
-            return false;
-          } else {
-            rem = [0, 0, 0, 0];
-          }
-        })
-      : "";
-  };
-  VisitorsData();
-  let i = 0;
-  const tabsHtml = formData.data
-    ? formData.data.rewards.map(ele => {
-        ++i;
+  const tabsHtml = props.fullData.rewards
+    ? props.fullData.rewards.map(ele => {
         return (
           <div key={ele.pointsRequired} className="row mb-3 offer-row">
             <div className="col-md-12">
@@ -56,16 +27,29 @@ const Offers = props => {
                   </span>
                 </div>
                 <div className="point-sent col-md-1">
-                  <span className="text-muted">{ele.pointsRequired} Sent</span>
+                  <span className="text-muted">{ele.pointsRequired} </span>
                 </div>
                 <div className="redeem col-md-2 text-md-center">
                   <span className="text-muted">
-                    {ele["total lifetime redemptions"]} Redeemed
+                    {ele["total lifetime redemptions"]}
                   </span>
                 </div>
                 <div className="col-md-2">
-                  <span className="text-green font-weight-bold">
-                    {rem[i - 1]}%
+                  <span className="">
+                    {props.fullData
+                      ? props.fullData[tabValue].map(res => {
+                          if (res.date === changeName(tabValue)) {
+                            if (res.rewards) {
+                              res.rewards.map(rslt => {
+                                if (rslt.reward == ele.reward) {
+                                  return (finalValue = rslt.redemptions);
+                                }
+                              });
+                            }
+                          }
+                        })
+                      : ""}
+                    {finalValue}
                   </span>
                 </div>
               </div>

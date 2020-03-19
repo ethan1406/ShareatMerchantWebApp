@@ -31,7 +31,7 @@ class VisitorsCharts extends Component {
 
     if (this.props.type == "rewards") {
       const dayData = this.props.chartData
-        ? this.props.chartData[tabvalue].map(ele => {
+        ? this.props.chartData.map(ele => {
             if (ele.rewards) {
               dd.push({
                 label: ele.date,
@@ -62,7 +62,7 @@ class VisitorsCharts extends Component {
         : "";
     } else {
       const dayData = this.props.chartData
-        ? this.props.chartData[tabvalue].map(ele => {
+        ? this.props.chartData.map(ele => {
             dd.push({
               label: ele.date,
               y: ele["returning customer"],
@@ -94,14 +94,14 @@ class VisitorsCharts extends Component {
         reversed: true
       },
       height: 170,
-      width: 800,
+      width: 480,
       toolTip: {
         content: "{name}: {y}"
       },
       axisX: {
         interval: 1,
-        intervalType: "day",
-        maximum: 30
+        intervalType: "day"
+        //maximum: 30
       },
       dataPointWidth: 20,
       data: [

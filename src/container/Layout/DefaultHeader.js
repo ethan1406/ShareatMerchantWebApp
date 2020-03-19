@@ -1,6 +1,11 @@
 import React, { Fragment } from "react";
-import { Link, navLink, useHistory } from "react-router-dom";
+
 import { Button, nav } from "react-bootstrap";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Layout from "./Layout";
+import CustomerLayolty from "../../views/CustomersLoyalty";
+import { NavLink } from "react-router-dom";
 
 const DefaultHeader = () => {
   return (
@@ -33,26 +38,21 @@ const DefaultHeader = () => {
             >
               <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li className="nav-item  mr-5 active">
-                  <a className="nav-link" href="#">
+                  <NavLink to="/" exact>
                     Home
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="nav-item mr-5">
-                  <a className="nav-link" href="#">
-                    Customers Loyalty
-                  </a>
+                  <NavLink to="/customersLoyalty">Customers Loyalty</NavLink>
                 </li>
                 <li className="nav-item mr-5">
-                  <a className="nav-link" href="#">
-                    Have a Question
-                  </a>
+                  <NavLink to="">Have a Question</NavLink>
                 </li>
                 <li className="nav-item mr-5">
-                  <a className="nav-link" href="#">
-                    Boiling Point
-                  </a>
+                  <NavLink to="">Boiling Point</NavLink>
                 </li>
               </ul>
+
               <ul className="navbar-nav mt-2 mt-lg-0 float-lg-right">
                 <li className="nav-item">
                   <a className="nav-link" href="#">

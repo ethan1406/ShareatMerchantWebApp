@@ -191,6 +191,94 @@ export const dateValue = () => {
   );
 };
 
+export const getStartDay = (w, y) => {
+  var d = 1 + (w - 1) * 7; // 1st of January + 7 days for each week
+
+  const ff = new Date(y, 0, d);
+
+  var day = ff.getDay();
+  const startD = new Date(
+    ff.getFullYear(),
+    ff.getMonth(),
+    ff.getDate() + (day == 0 ? -6 : 1) - day
+  );
+
+  var dd = startD.getDate();
+  var mm = startD.getMonth() + 1;
+  var yyyy = startD.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  var month_name = function(dt) {
+    var a = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ];
+    return a[dt.getMonth()];
+  };
+  var month = month_name(new Date());
+  let today = month + " " + dd;
+  return today;
+};
+
+export const getEndDay = (w, y) => {
+  var d = 1 + (w - 1) * 7; // 1st of January + 7 days for each week
+
+  const ff = new Date(y, 0, d);
+
+  var day = ff.getDay();
+  let endD = new Date(
+    ff.getFullYear(),
+    ff.getMonth(),
+    ff.getDate() + (day == 0 ? -6 : 7) - day
+  );
+
+  var dd = endD.getDate();
+  var mm = endD.getMonth() + 1;
+  var yyyy = endD.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  var month_name = function(dt) {
+    var a = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ];
+    return a[dt.getMonth()];
+  };
+  var month = month_name(new Date());
+  let today = month + " " + dd;
+  return today;
+
+  return today;
+};
+
 export const changeName = tabValue => {
   switch (tabValue) {
     case "day":

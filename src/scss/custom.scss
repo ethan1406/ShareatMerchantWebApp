@@ -115,6 +115,11 @@ body {
 	a{
 		i{
 			cursor: pointer;
+			font-size:20px;
+		}
+		i.disabled{
+			opacity:0.5;
+			pointer-events:none;
 		}
 	}
 }
@@ -149,13 +154,13 @@ body {
 	}
 	
 } 
-.offer-row:first-of-type .d-flex{
+.offer-row:nth-child(2) .d-flex{
 	border-left: 7px solid #ff7a7a !important;
 }
-.offer-row:nth-child(2) .d-flex{
+.offer-row:nth-child(3) .d-flex{
 	border-left: 7px solid #80aaff !important;
 }
-.offer-row:nth-child(3) .d-flex{
+.offer-row:nth-child(4) .d-flex{
 	border-left: 7px solid #8510d8 !important;
 }
 .offer-row:last-of-type .d-flex{

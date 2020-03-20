@@ -29,11 +29,7 @@ const Offers = props => {
                 <div className="point-sent col-md-1">
                   <span className="text-muted">{ele.pointsRequired} </span>
                 </div>
-                <div className="redeem col-md-2 text-md-center">
-                  <span className="text-muted">
-                    {ele["total lifetime redemptions"]}
-                  </span>
-                </div>
+
                 <div className="col-md-2">
                   <span className="">
                     {props.fullData
@@ -43,6 +39,8 @@ const Offers = props => {
                               res.rewards.map(rslt => {
                                 if (rslt.reward == ele.reward) {
                                   return (finalValue = rslt.redemptions);
+                                } else {
+                                  return (finalValue = 0);
                                 }
                               });
                             }
@@ -52,6 +50,11 @@ const Offers = props => {
                     {finalValue}
                   </span>
                 </div>
+                <div className="redeem col-md-2 text-md-center">
+                  <span className="text-muted">
+                    {ele["total lifetime redemptions"]}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -59,7 +62,27 @@ const Offers = props => {
       })
     : "";
 
-  return <div className="container">{tabsHtml}</div>;
+  return (
+    <div className="container">
+      <div className="row mb-3 heading-title">
+        <div className="col-md-12">
+          <div className="d-flex p-2  align-items-center flex-column flex-md-row">
+            <div className="offer-detail text-left col-md-7"></div>
+            <div className="offer-detail text-center col-md-1 font-weight-bold">
+              Pt Cost
+            </div>
+            <div className="offer-detail text-center col-md-2 font-weight-bold">
+              Total Redemptions This Period
+            </div>
+            <div className="offer-detail text-center font-weight-bold col-md-2">
+              Total Lifetime Redemptions
+            </div>
+          </div>
+        </div>
+      </div>
+      {tabsHtml}
+    </div>
+  );
 };
 
 export default Offers;

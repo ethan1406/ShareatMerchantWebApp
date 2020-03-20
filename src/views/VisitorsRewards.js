@@ -8,7 +8,11 @@ import {
   changeName,
   dateValue,
   yesterdayDate,
-  changeYesterday
+  changeYesterday,
+  getMondayOfCurrentWeek,
+  getSundayOfCurrentWeek,
+  getEndDay,
+  getStartDay
 } from "../container/Layout/utils/helpers";
 class VisitorsRewards extends Component {
   state = {
@@ -42,6 +46,7 @@ class VisitorsRewards extends Component {
         endno = data[tabValue].length - 1;
       }
     }
+
     for (let i = startno; i <= endno; i++) {
       const aa = this.state.data
         ? newData.push(
@@ -50,12 +55,30 @@ class VisitorsRewards extends Component {
         : "";
     }
 
-    this.setState({ nData: newData }, () => "");
+    this.setState(
+      {
+        nData: newData,
+        disabled:
+          this.state.data[this.state.tabValue].length - 7 <= this.state.end
+            ? "0"
+            : "1"
+      },
+      () => ""
+    );
   }
 
   tabLink(e) {
     this.setState(
-      { ...this.state.data, tabValue: e.target.value, start: 0, end: 6 },
+      {
+        ...this.state.data,
+        tabValue: e.target.value,
+        start: 0,
+        end: 6,
+        disabled:
+          this.state.data[this.state.tabValue].length <= this.state.end
+            ? "0"
+            : "1"
+      },
       () => {
         this.mainData();
         this.visitorsPeriod();
@@ -65,6 +88,7 @@ class VisitorsRewards extends Component {
   }
 
   MoveLeft(e) {
+    let tabValue = this.state.tabValue;
     this.setState(
       {
         start:
@@ -76,9 +100,17 @@ class VisitorsRewards extends Component {
   }
 
   MoveRight(e) {
+    let tabValue = this.state.tabValue;
+    let vale = this.state.end + 7;
     this.setState(
-      { start: this.state.start + 7, end: this.state.end + 7 },
-      () => this.mainData()
+      {
+        //disabled: this.state.data[tabValue].length - 7 <= vale ? "0" : "1",
+        start: this.state.start + 7,
+        end: this.state.end + 7
+      },
+      () => {
+        this.mainData();
+      }
     );
   }
 
@@ -181,13 +213,17 @@ class VisitorsRewards extends Component {
               <div className="col-md-12">
                 <a className="text-muted float-sm-left py-2 pr-2 d-block text-center">
                   <i
-                    className="fa fa-angle-left mr-2"
+                    className={`fa fa-angle-left mr-2 ${
+                      this.state.start == "0" ? "disabled" : ""
+                    }`}
                     aria-hidden="true"
                     onClick={e => this.MoveLeft(e)}
                   ></i>
-                  Day of the Week
+
                   <i
-                    className="fa fa-angle-right ml-2"
+                    className={`fa fa-angle-right ml-2 ${
+                      this.state.disabled == "0" ? "disabled" : ""
+                    }`}
                     aria-hidden="true"
                     onClick={e => this.MoveRight(e)}
                   ></i>

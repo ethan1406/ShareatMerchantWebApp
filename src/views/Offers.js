@@ -17,7 +17,7 @@ const Offers = props => {
           <div key={ele.pointsRequired} className="row mb-3 offer-row">
             <div className="col-md-12">
               <div className="d-flex p-2 border rounded align-items-center flex-column flex-md-row">
-                <div className="offer-detail text-left col-md-7">
+                <div className="offer-detail text-left col-md-7 col-12">
                   <span className="d-block">{ele.reward}</span>
                   <span className="text-muted">
                     Valid Monday thru Friday 3:00pm to 9:00pm
@@ -26,12 +26,12 @@ const Offers = props => {
                     <i className="fas fa-circle"></i> Active
                   </span>
                 </div>
-                <div className="point-sent col-md-1">
+                <div className="point-sent col-md-1 col-4">
                   <span className="text-muted">{ele.pointsRequired} </span>
                 </div>
 
-                <div className="col-md-2">
-                  <span className="">
+                <div className="col-md-2 col-4">
+                  <span className="text-muted">
                     {props.fullData
                       ? props.fullData[tabValue].map(res => {
                           if (res.date === changeName(tabValue)) {
@@ -50,7 +50,7 @@ const Offers = props => {
                     {finalValue}
                   </span>
                 </div>
-                <div className="redeem col-md-2 text-md-center">
+                <div className="redeem col-md-2 col-4 text-md-center">
                   <span className="text-muted">
                     {ele["total lifetime redemptions"]}
                   </span>
@@ -67,14 +67,14 @@ const Offers = props => {
       <div className="row mb-3 heading-title">
         <div className="col-md-12">
           <div className="d-flex p-2  align-items-center flex-column flex-md-row">
-            <div className="offer-detail text-left col-md-7"></div>
-            <div className="offer-detail text-center col-md-1 font-weight-bold">
+            <div className="offer-detail text-left col-md-7 col-12"></div>
+            <div className="offer-detail text-center col-md-1 col-4 font-weight-bold">
               Pt Cost
             </div>
-            <div className="offer-detail text-center col-md-2 font-weight-bold">
+            <div className="offer-detail text-center col-md-2 col-4 font-weight-bold">
               Total Redemptions This Period
             </div>
-            <div className="offer-detail text-center font-weight-bold col-md-2">
+            <div className="offer-detail text-center font-weight-bold col-md-2 col-4">
               Total Lifetime Redemptions
             </div>
           </div>

@@ -275,8 +275,6 @@ export const getEndDay = (w, y) => {
   var month = month_name(new Date());
   let today = month + " " + dd;
   return today;
-
-  return today;
 };
 
 export const changeName = tabValue => {

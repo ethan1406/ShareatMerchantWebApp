@@ -47,19 +47,18 @@ class VisitorsRewards extends Component {
       }
     }
 
-    for (let i = startno; i <= endno; i++) {
+    for (let i = endno; i >= startno; i--) {
       const aa = this.state.data
         ? newData.push(
             this.state.data[tabValue] ? this.state.data[tabValue][i] : ""
           )
         : "";
     }
-
     this.setState(
       {
         nData: newData,
         disabled:
-          this.state.data[this.state.tabValue].length - 7 <= this.state.end
+          this.state.data[this.state.tabValue].length <= this.state.end
             ? "0"
             : "1"
       },
@@ -86,8 +85,21 @@ class VisitorsRewards extends Component {
       }
     );
   }
-
   MoveLeft(e) {
+    let tabValue = this.state.tabValue;
+    let vale = this.state.end + 7;
+    this.setState(
+      {
+        start: this.state.start + 7,
+        end: this.state.end + 7
+      },
+      () => {
+        this.mainData();
+      }
+    );
+  }
+
+  MoveRight(e) {
     let tabValue = this.state.tabValue;
     this.setState(
       {
@@ -96,21 +108,6 @@ class VisitorsRewards extends Component {
         end: this.state.start == "0" ? this.state.end : this.state.end - 7
       },
       () => this.mainData()
-    );
-  }
-
-  MoveRight(e) {
-    let tabValue = this.state.tabValue;
-    let vale = this.state.end + 7;
-    this.setState(
-      {
-        //disabled: this.state.data[tabValue].length - 7 <= vale ? "0" : "1",
-        start: this.state.start + 7,
-        end: this.state.end + 7
-      },
-      () => {
-        this.mainData();
-      }
     );
   }
 
@@ -214,15 +211,15 @@ class VisitorsRewards extends Component {
                 <a className="text-muted float-sm-left py-2 pr-2 d-block text-center">
                   <i
                     className={`fa fa-angle-left mr-2 ${
-                      this.state.start == "0" ? "disabled" : ""
+                      this.state.disabled == "0" ? "disabled" : ""
                     }`}
                     aria-hidden="true"
                     onClick={e => this.MoveLeft(e)}
                   ></i>
 
                   <i
-                    className={`fa fa-angle-right ml-2 ${
-                      this.state.disabled == "0" ? "disabled" : ""
+                    className={`fa fa-angle-right ml-2  ${
+                      this.state.start == "0" ? "disabled" : ""
                     }`}
                     aria-hidden="true"
                     onClick={e => this.MoveRight(e)}
@@ -285,7 +282,7 @@ class VisitorsRewards extends Component {
                         <h4 className="text-orange">Visitors</h4>
                       </div>
                       <div className="row justify-content-between chart_section">
-                        <div className="col-md-5 border rounded mb-4">
+                        <div className="col-md-5 col-12 border rounded mb-4">
                           <div className="visitors-section">
                             <VisitorsCharts
                               chartData={this.state.nData}
@@ -297,7 +294,7 @@ class VisitorsRewards extends Component {
                             />
                           </div>
                         </div>
-                        <div className="col-md-5 border rounded mb-4">
+                        <div className="col-md-5 col-12 border rounded mb-4">
                           <div className="duration-section d-flex h-100 align-items-center px-4">
                             <div className="current-period d-flex align-items-center border-right">
                               <div className="current-value">
@@ -337,7 +334,7 @@ class VisitorsRewards extends Component {
                         <h4 className="text-orange">Rewards</h4>
                       </div>
                       <div className="row justify-content-between chart_section">
-                        <div className="col-md-5 border rounded mb-4">
+                        <div className="col-md-5 col-12 border rounded mb-4">
                           <div className="rewards-section">
                             <VisitorsCharts
                               chartData={this.state.nData}
@@ -351,7 +348,7 @@ class VisitorsRewards extends Component {
                             />
                           </div>
                         </div>
-                        <div className="col-md-5 border rounded mb-4">
+                        <div className="col-md-5 col-12 border rounded mb-4">
                           <div className="duration-section d-flex h-100 align-items-center px-4">
                             <div className="current-period d-flex align-items-center border-right">
                               <div className="current-value">
@@ -398,7 +395,7 @@ class VisitorsRewards extends Component {
                         <h4 className="text-orange">Visitors</h4>
                       </div>
                       <div className="row justify-content-between chart_section">
-                        <div className="col-md-5 border rounded mb-4">
+                        <div className="col-md-5 col-12 border rounded mb-4">
                           <div className="visitors-section">
                             <VisitorsCharts
                               chartData={this.state.nData}
@@ -410,7 +407,7 @@ class VisitorsRewards extends Component {
                             />
                           </div>
                         </div>
-                        <div className="col-md-5 border rounded mb-4">
+                        <div className="col-md-5 col-12 border rounded mb-4">
                           <div className="duration-section d-flex h-100 align-items-center px-4">
                             <div className="current-period d-flex align-items-center border-right">
                               <div className="current-value">

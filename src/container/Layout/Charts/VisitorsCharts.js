@@ -107,7 +107,6 @@ class VisitorsCharts extends Component {
             if (tabvalue === "week") {
               var week = ele.date.split(" ")[0];
               var year = ele.date.split(" ")[1];
-
               labelVal =
                 getStartDay(week, year) + " ~ " + getEndDay(week, year);
             } else {

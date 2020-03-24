@@ -46,10 +46,7 @@ body {
 		
 	}
 }
-.chart_section > div{
-	overflow-x:auto;
-	overflow-y:hidden;
-}
+
 #pills-tab {
 	max-width: 250px;
 	li{
@@ -183,6 +180,17 @@ body {
 }
 .canvasjs-chart-toolbar {
     display: none;
+}
+.maincontainer {
+	background: #f9f9f9;
+	.chart_section > div{
+		overflow-x:auto;
+		overflow-y:hidden;
+		background: #fff;
+	}
+	.offer-row > div {
+		background: #fff;
+	}
 }
 @media screen and (max-width: 575px) {
 	.profile-dashboard div {

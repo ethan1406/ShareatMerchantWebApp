@@ -98,6 +98,31 @@ class VisitorsCharts extends Component {
                   name: ""
                 });
               }
+            } else {
+              dd.push({
+                label: labelVal,
+                y: 0,
+                color: this.props.color1,
+                name: ""
+              });
+              dd2.push({
+                label: labelVal,
+                y: 0,
+                color: this.props.color2,
+                name: ""
+              });
+              dd3.push({
+                label: labelVal,
+                y: 0,
+                color: this.props.color3,
+                name: ""
+              });
+              dd4.push({
+                label: labelVal,
+                y: 0,
+                color: this.props.color4,
+                name: ""
+              });
             }
           })
         : "";
@@ -112,6 +137,7 @@ class VisitorsCharts extends Component {
             } else {
               labelVal = ele.date;
             }
+
             dd.push({
               label: labelVal,
               y: ele["returning customer"],
@@ -136,7 +162,6 @@ class VisitorsCharts extends Component {
         fontFamily: "verdana"
       },
       axisY: {
-        // title: this.props.yaxis
         gridThickness: 0
       },
       toolTip: {
@@ -149,7 +174,6 @@ class VisitorsCharts extends Component {
         content: "{name}: {y}"
       },
       axisX: {
-        interval: 1,
         intervalType: "day"
       },
       dataPointWidth: 30,

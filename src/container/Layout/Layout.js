@@ -5,7 +5,7 @@ import VisitorsRewards from "../../views/VisitorsRewards";
 
 const Layout = () => {
   return (
-    <div>
+    <div className="maincontainer">
       <BolingCrab />
       <VisitorsRewards />
     </div>

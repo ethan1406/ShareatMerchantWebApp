@@ -1,5 +1,7 @@
 export const currentdate = () => {
   var today = new Date();
+  // console.log("today");
+  // console.log(today);
   var dd = today.getDate();
   var mm = today.getMonth() + 1;
   var yyyy = today.getFullYear();
@@ -202,6 +204,8 @@ export const getStartDay = (w, y) => {
     ff.getMonth(),
     ff.getDate() + (day == 0 ? -6 : 1) - day
   );
+  console.log("startD");
+  console.log(startD);
 
   var dd = startD.getDate();
   var mm = startD.getMonth() + 1;
@@ -229,8 +233,9 @@ export const getStartDay = (w, y) => {
     ];
     return a[dt.getMonth()];
   };
-  var month = month_name(new Date());
-  let today = month + " " + dd;
+  var month = month_name(startD);
+  var today = month + " " + dd;
+
   return today;
 };
 
@@ -272,7 +277,7 @@ export const getEndDay = (w, y) => {
     ];
     return a[dt.getMonth()];
   };
-  var month = month_name(new Date());
+  var month = month_name(endD);
   let today = month + " " + dd;
   return today;
 };

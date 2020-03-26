@@ -26,7 +26,7 @@ class VisitorsRewards extends Component {
 
   componentDidMount() {
     const res = axios
-      .get(`/5b346f48d585fb0e7d3ed3fc/${dateValue()}`)
+      .get(`${baseUrl}/5b346f48d585fb0e7d3ed3fc/${dateValue()}`)
       .then(res => {
         const persons = res.data;
         this.setState({ data: res.data, tabValue: "day" }, () => {

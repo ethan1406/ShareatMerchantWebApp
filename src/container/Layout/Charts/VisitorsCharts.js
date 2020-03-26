@@ -35,11 +35,13 @@ class VisitorsCharts extends Component {
       const dayData = this.props.chartData
         ? this.props.chartData.map(ele => {
             if (tabvalue === "week") {
-              var week = ele.date.split(" ")[0];
-              var year = ele.date.split(" ")[1];
+              if (ele.date != undefined) {
+                var week = ele.date.split(" ")[0];
+                var year = ele.date.split(" ")[1];
 
-              labelVal =
-                getStartDay(week, year) + " ~ " + getEndDay(week, year);
+                labelVal =
+                  getStartDay(week, year) + " ~ " + getEndDay(week, year);
+              }
             } else {
               labelVal = ele.date;
             }
@@ -130,10 +132,12 @@ class VisitorsCharts extends Component {
       const dayData = this.props.chartData
         ? this.props.chartData.map(ele => {
             if (tabvalue === "week") {
-              var week = ele.date.split(" ")[0];
-              var year = ele.date.split(" ")[1];
-              labelVal =
-                getStartDay(week, year) + " ~ " + getEndDay(week, year);
+              if (ele.date != undefined) {
+                var week = ele.date.split(" ")[0];
+                var year = ele.date.split(" ")[1];
+                labelVal =
+                  getStartDay(week, year) + " ~ " + getEndDay(week, year);
+              }
             } else {
               labelVal = ele.date;
             }

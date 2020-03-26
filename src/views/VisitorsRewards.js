@@ -54,29 +54,40 @@ class VisitorsRewards extends Component {
           )
         : "";
     }
+    
+    const currentData = this.state.data[this.state.tabValue]
+    const shouldDisabled = "0"
+    if (currentData != undefined) {
+      if (currentData > this.state.end) {
+        shouldDisabled = "1"
+      }
+    } 
+
     this.setState(
       {
         nData: newData,
-        disabled:
-          this.state.data[this.state.tabValue].length <= this.state.end
-            ? "0"
-            : "1"
+        disabled: shouldDisabled
       },
       () => ""
     );
   }
 
   tabLink(e) {
+    const currentData = this.state.data[this.state.tabValue]
+    const shouldDisabled = "0"
+    if (currentData != undefined) {
+      if (currentData > this.state.end) {
+        shouldDisabled = "1"
+      }
+    } 
+
     this.setState(
       {
         ...this.state.data,
         tabValue: e.target.value,
         start: 0,
         end: 6,
-        disabled:
-          this.state.data[this.state.tabValue].length <= this.state.end
-            ? "0"
-            : "1"
+        disabled: shouldDisabled
       },
       () => {
         this.mainData();
@@ -117,13 +128,17 @@ class VisitorsRewards extends Component {
     let percentage = 0;
     let tabValue = this.state.tabValue;
     let status = 1;
-    this.state.data[tabValue].map(ele => {
+
+    if (this.state.data[tabValue] != undefined) {
+      this.state.data[tabValue].map(ele => {
       if (ele.date === changeName(tabValue)) {
         thisperiod = ele["returning customer"] + ele["new customers"];
       } else if (ele.date === changeYesterday(tabValue)) {
         lastperiod = ele["returning customer"] + ele["new customers"];
       }
-    });
+      });
+    }
+    
     if (thisperiod - lastperiod > 0) {
       percentage = parseInt(
         ((thisperiod - lastperiod) / (thisperiod + lastperiod)) * 100
@@ -159,7 +174,8 @@ class VisitorsRewards extends Component {
     let status = 1;
     let tabValue = this.state.tabValue;
 
-    this.state.data[tabValue].map(ele => {
+    if (this.state.data[tabValue] != undefined) {
+      this.state.data[tabValue].map(ele => {
       if (ele.date === changeName(tabValue)) {
         if (ele.rewards) {
           let value = 0;
@@ -176,8 +192,10 @@ class VisitorsRewards extends Component {
           });
           prevRew = value;
         }
-      }
-    });
+       }
+      });
+    }
+
     if (curRew - prevRew > 0) {
       perRew = parseInt(((curRew - prevRew) / (curRew + prevRew)) * 100);
     } else if (curRew - prevRew < 0) {

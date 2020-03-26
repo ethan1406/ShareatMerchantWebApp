@@ -7,7 +7,7 @@ const BoilingCrab = () => {
   const [formData, setFormData] = useState({});
 
   const getMerchant = async () => {
-    const data = await axios.get(`${baseUrl}/5b346f48d585fb0e7d3ed3fc/${dateValue()}`);
+    const data = await axios.get(`/5b346f48d585fb0e7d3ed3fc/${dateValue()}`);
     setFormData({ ...formData, ...data });
   };
   useEffect(() => {
@@ -20,9 +20,9 @@ const BoilingCrab = () => {
         <div className="row align-items-end">
           <div className="col-md-4">
             <div className="edit-profile">
-              <h5 className="mb-0">The Boiling Crab</h5>
+              <h5 className="mb-0">{formData.data ? formData.data["name"] : ""}</h5>
               <p className="mb-0 text-muted">
-                466 S.Colorade Blvd, Pesdene CA97442
+                {formData.data ? formData.data["address"] : ""}
               </p>
               <a href="">Edit Profile</a>
             </div>

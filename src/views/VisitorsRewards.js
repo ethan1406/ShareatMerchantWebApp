@@ -26,7 +26,7 @@ class VisitorsRewards extends Component {
 
   componentDidMount() {
     const res = axios
-      .get(`${baseUrl}/5b346f48d585fb0e7d3ed3fc/${dateValue()}`)
+      .get(`/5b346f48d585fb0e7d3ed3fc/${dateValue()}`)
       .then(res => {
         const persons = res.data;
         this.setState({ data: res.data, tabValue: "day" }, () => {
@@ -58,9 +58,9 @@ class VisitorsRewards extends Component {
     }
     
     const currentData = this.state.data[this.state.tabValue]
-    const shouldDisabled = "0"
+    var shouldDisabled = "0"
     if (currentData != undefined) {
-      if (currentData > this.state.end) {
+      if (currentData.length > this.state.end) {
         shouldDisabled = "1"
       }
     } 
@@ -76,9 +76,9 @@ class VisitorsRewards extends Component {
 
   tabLink(e) {
     const currentData = this.state.data[this.state.tabValue]
-    const shouldDisabled = "0"
+    var shouldDisabled = "0"
     if (currentData != undefined) {
-      if (currentData > this.state.end) {
+      if (currentData.length > this.state.end) {
         shouldDisabled = "1"
       }
     } 

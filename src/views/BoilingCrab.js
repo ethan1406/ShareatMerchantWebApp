@@ -7,9 +7,7 @@ const BoilingCrab = () => {
   const [formData, setFormData] = useState({});
 
   const getMerchant = async () => {
-    console.log(baseUrl);
     const data = await axios.get(`${baseUrl}/5b346f48d585fb0e7d3ed3fc/${dateValue()}`);
-    console.log(data);
     setFormData({ ...formData, ...data });
   };
   useEffect(() => {

@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Link, navLink, useHistory } from "react-router-dom";
 import { Button, nav } from "react-bootstrap";
+import {websiteUrl} from '../../Constants';
 
 const DefaultFooter = () => {
   return (
@@ -36,23 +37,8 @@ const DefaultFooter = () => {
             <h5 className="text-orange font-weight-bold">About</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="" className="text-muted">
+                <a href= {`${websiteUrl}`} className="text-muted">
                   How Shareat Works
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-muted">
-                  Request Merchant Services
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-muted">
-                  Become a Shareat Partner
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-muted">
-                  Help
                 </a>
               </li>
             </ul>
@@ -61,22 +47,7 @@ const DefaultFooter = () => {
             <h5 className="text-orange font-weight-bold">Company</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="" className="text-muted">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-muted">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-muted">
-                  Press
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-muted">
+                <a href= {`${websiteUrl}/meet-the-team`} className="text-muted">
                   Contact
                 </a>
               </li>
@@ -86,17 +57,12 @@ const DefaultFooter = () => {
             <h5 className="text-orange font-weight-bold">Terms & Policies</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="" className="text-muted">
+                <a href= {`${websiteUrl}/terms-of-use`} className="text-muted">
                   Terms of Services
                 </a>
               </li>
               <li>
-                <a href="" className="text-muted">
-                  Merchant Policy
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-muted">
+                <a href= {`${websiteUrl}/private-policy`} className="text-muted">
                   Privacy Policy
                 </a>
               </li>

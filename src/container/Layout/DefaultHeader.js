@@ -42,27 +42,6 @@ const DefaultHeader = () => {
                     Home
                   </NavLink>
                 </li>
-                <li className="nav-item mr-5">
-                  <NavLink to="/customersLoyalty">Customers Loyalty</NavLink>
-                </li>
-                <li className="nav-item mr-5">
-                  <NavLink to="">Have a Question</NavLink>
-                </li>
-                <li className="nav-item mr-5">
-                  <NavLink to="">Boiling Point</NavLink>
-                </li>
-              </ul>
-
-              <ul className="navbar-nav mt-2 mt-lg-0 float-lg-right">
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    {/* <!-- <i className="far fa-user-circle fa-2x"></i> --> */}
-                    <img
-                      src="/assets/img/profile-icon.png"
-                      className="img-fluid profile-pic"
-                    />
-                  </a>
-                </li>
               </ul>
             </div>
           </nav>

@@ -24,7 +24,6 @@ const BoilingCrab = () => {
               <p className="mb-0 text-muted">
                 {formData.data ? formData.data["address"] : ""}
               </p>
-              <a href="">Edit Profile</a>
             </div>
           </div>
           <div className="col-md-8">

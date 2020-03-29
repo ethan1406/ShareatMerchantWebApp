@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Layout from "./Layout";
 import CustomerLayolty from "../../views/CustomersLoyalty";
 import { NavLink } from "react-router-dom";
+import { Auth, Analytics } from 'aws-amplify'
 
 const DefaultHeader = () => {
   return (
@@ -41,6 +42,13 @@ const DefaultHeader = () => {
                   <NavLink to="/" exact>
                     Home
                   </NavLink>
+                </li>
+              </ul>
+              <ul className="navbar-nav mt-2 mt-lg-0 float-lg-right">
+                <li className="nav-item">
+                  <button onClick={()=> Auth.signOut()} style={{backgroundColor: 'transparent', borderColor: 'transparent'}}>
+                    Log Out
+                  </button>
                 </li>
               </ul>
             </div>

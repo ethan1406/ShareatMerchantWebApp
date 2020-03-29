@@ -3,13 +3,22 @@ import axios from "axios";
 import { dateValue } from "../container/Layout/utils/helpers";
 import {baseUrl} from '../Constants'
 
+import { Auth } from 'aws-amplify'
+
 const BoilingCrab = () => {
   const [formData, setFormData] = useState({});
 
   const getMerchant = async () => {
-    const data = await axios.get(`${baseUrl}/5b346f48d585fb0e7d3ed3fc/${dateValue()}`);
-    setFormData({ ...formData, ...data });
+    try {
+      const user = await Auth.currentSession();
+      console.log(user.accessToken.payload.sub);
+      const data = await axios.get(`${baseUrl}/${user.accessToken.payload.sub}/${dateValue()}`);
+      setFormData({ ...formData, ...data });
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   useEffect(() => {
     getMerchant();
   }, []);

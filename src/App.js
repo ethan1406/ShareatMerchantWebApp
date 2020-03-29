@@ -49,9 +49,5 @@ function App() {
   );
 }
 
-const signUpConfig = {
-  header: 'My Customized Sign Up',
-  hideAllDefaults: true
-};
 
-export default withAuthenticator(App, true, [<SignIn />, <ForgotPassword />]);
+export default withAuthenticator(App, { usernameAttributes: 'email', authenticatorComponents: [<SignIn />, <ForgotPassword />]});

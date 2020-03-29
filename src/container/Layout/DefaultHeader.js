@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Layout from "./Layout";
 import CustomerLayolty from "../../views/CustomersLoyalty";
 import { NavLink } from "react-router-dom";
-import { Auth, Analytics } from 'aws-amplify'
+import { Auth } from 'aws-amplify'
 
 const DefaultHeader = () => {
   return (
@@ -18,7 +18,7 @@ const DefaultHeader = () => {
               className="navbar-brand text-orange text-center col-lg-2 col-6"
               href="#"
             >
-              <img src="/assets/img/logo.jpg" className="site-logo img-fluid" />
+              <img src="/assets/img/logo.jpg" className="site-logo img-fluid" alt="Shareat"/>
             </a>
             <Button
               className="navbar-toggler"

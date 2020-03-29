@@ -14,6 +14,8 @@ import {
   getEndDay,
   getStartDay
 } from "../container/Layout/utils/helpers";
+
+import { Auth } from 'aws-amplify'
 import {baseUrl} from '../Constants'
 
 class VisitorsRewards extends Component {
@@ -24,17 +26,19 @@ class VisitorsRewards extends Component {
     nData: []
   };
 
-  componentDidMount() {
-    const res = axios
-      .get(`${baseUrl}/5b346f48d585fb0e7d3ed3fc/${dateValue()}`)
-      .then(res => {
-        const persons = res.data;
-        this.setState({ data: res.data, tabValue: "day" }, () => {
+  async componentDidMount() {
+    try {
+      const user = await Auth.currentSession();
+      console.log(user.accessToken.payload.sub);
+      const {data} = await axios.get(`${baseUrl}/${user.accessToken.payload.sub}/${dateValue()}`);
+        this.setState({ data: data, tabValue: "day" }, () => {
           this.mainData();
           this.visitorsPeriod();
           this.rewardsPeriod();
-        });
       });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   mainData() {
